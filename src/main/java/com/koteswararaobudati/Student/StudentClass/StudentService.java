@@ -1,6 +1,5 @@
 package com.koteswararaobudati.Student.StudentClass;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
