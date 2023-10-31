@@ -1,5 +1,6 @@
 package com.koteswararaobudati.Student.StudentClass;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -8,10 +9,16 @@ import java.util.List;
 
 @Service
 public class StudentService {
+
+    private StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Student> getStudent(){
         LocalDate dob = LocalDate.of(1994, Month.DECEMBER, 22);
-        return List.of(
-                new Student(1L, "Koti", "koti@koti.com", dob, 22)
-        );
+        return studentRepository.findAll();
     }
 }

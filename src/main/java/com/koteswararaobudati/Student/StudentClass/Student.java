@@ -1,8 +1,23 @@
 package com.koteswararaobudati.Student.StudentClass;
 
+import jakarta.persistence.*;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(
+            name = "Student_sequence",
+            sequenceName = "Student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "Student_sequence"
+    )
     private long id;
     private String name;
     private String email;
@@ -20,6 +35,14 @@ public class Student {
         this.age = age;
     }
 
+
+
+    public Student(String name, String email, LocalDate dob, int age) {
+        this.name = name;
+        this.email = email;
+        this.dob = dob;
+        this.age = age;
+    }
     @Override
     public String toString() {
         return "Student{" +
@@ -30,14 +53,6 @@ public class Student {
                 ", age=" + age +
                 '}';
     }
-
-    public Student(String name, String email, LocalDate dob, int age) {
-        this.name = name;
-        this.email = email;
-        this.dob = dob;
-        this.age = age;
-    }
-
     public long getId() {
         return id;
     }
