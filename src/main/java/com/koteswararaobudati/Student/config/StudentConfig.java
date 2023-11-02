@@ -1,4 +1,4 @@
-package com.koteswararaobudati.Student.StudentClass;
+package com.koteswararaobudati.Student.config;
 
 
 import org.springframework.context.annotation.Configuration;

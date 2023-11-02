@@ -1,5 +1,7 @@
-package com.koteswararaobudati.Student.StudentClass;
+package com.koteswararaobudati.Student.service;
 
+import com.koteswararaobudati.Student.entity.Student;
+import com.koteswararaobudati.Student.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.koteswararaobudati.Student.Faculty;
+package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class Faculty {
             strategy = GenerationType.SEQUENCE,
             generator = "Faculty-Sequence"
     )
-    private long id;
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;

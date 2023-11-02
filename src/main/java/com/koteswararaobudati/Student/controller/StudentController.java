@@ -1,4 +1,6 @@
-package com.koteswararaobudati.Student.StudentClass;
+package com.koteswararaobudati.Student.controller;
+import com.koteswararaobudati.Student.service.StudentService;
+import com.koteswararaobudati.Student.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

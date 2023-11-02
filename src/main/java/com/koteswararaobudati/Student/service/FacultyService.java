@@ -1,5 +1,7 @@
-package com.koteswararaobudati.Student.Faculty;
+package com.koteswararaobudati.Student.service;
 
+import com.koteswararaobudati.Student.entity.Faculty;
+import com.koteswararaobudati.Student.repository.FacultyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
