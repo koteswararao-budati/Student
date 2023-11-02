@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
-@Table
+@Table(
+        name = "Student"
+)
 public class Student {
     @Id
     @SequenceGenerator(
