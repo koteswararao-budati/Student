@@ -58,6 +58,9 @@ public class Student {
     @Transient
     private int age;
 
+    @Embedded
+    private Guardian guardian;
+
     public int getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();
     }
