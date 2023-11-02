@@ -24,12 +24,47 @@ public class Faculty {
             strategy = GenerationType.SEQUENCE,
             generator = "Faculty-Sequence"
     )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
+
+    @Column(
+            name = "first_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String firstName;
+
+    @Column(
+            name = "middle_name",
+            columnDefinition = "TEXT"
+    )
     private String middleName;
+
+    @Column(
+            name = "last_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String lastName;
+
+    @Column(
+            name = "email",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String email;
+
+    @Column(
+            name = "dob",
+            nullable = false
+    )
     private LocalDate dob;
 
+    @Column(
+            name = "joined"
+    )
     private final LocalDate joined = LocalDate.now();
 }
