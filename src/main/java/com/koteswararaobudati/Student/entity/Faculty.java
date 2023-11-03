@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -66,5 +67,15 @@ public class Faculty {
     @Column(
             name = "joined"
     )
+
+    @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "id"
+    )
+    private List<Course> courses;
+
     private final LocalDate joined = LocalDate.now();
 }

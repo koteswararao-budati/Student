@@ -1,6 +1,7 @@
 package com.koteswararaobudati.Student.repository;
 
 import com.koteswararaobudati.Student.entity.Faculty;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,10 @@ public interface FacultyRepository extends JpaRepository<Faculty, Long> {
     Optional<Faculty> findFacultiesById(Long id);
 
     @Query("SELECT f.firstName, f.lastName FROM Faculty f WHERE f.id=?1")
-    Optional<Faculty> getFacultyFirstNameAndLastNameById(Long id);
+    Optional<String[]> getFacultyFirstNameAndLastNameById(Long id);
+
+    // you can implement transactions in service layer where all the transaction will not be committed until the entire service function block is executed
+    @Transactional
+    @Query("SELECT f.firstName FROM Faculty f WHERE f.email=?1 AND f.lastName=?2")
+    Optional<String> findFirstNameByFacultyEmailAndFacultyLastName(String email, String lastName);
 }

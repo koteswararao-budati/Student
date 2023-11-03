@@ -30,9 +30,9 @@ public class Student {
             generator = "Student_sequence"
     )
     @Column(
-            name = "id",
+            name = "student_id",
             updatable = false)
-    private long id;
+    private long studentId;
 
     @Column(
             name = "name",
@@ -45,7 +45,7 @@ public class Student {
             name = "email",
 //            unique = true,
             nullable = false,
-            columnDefinition = "TEXT"
+            columnDefinition = "varchar(200)"
     )
     private String email;
 
