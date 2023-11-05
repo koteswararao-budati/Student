@@ -26,7 +26,7 @@ public class Faculty {
             generator = "Faculty-Sequence"
     )
     @Column(
-            name = "id",
+            name = "faculty_id",
             updatable = false
     )
     private Long id;
@@ -72,8 +72,8 @@ public class Faculty {
             cascade = CascadeType.ALL
     )
     @JoinColumn(
-            name = "teacher_id",
-            referencedColumnName = "id"
+            name = "course_id",
+            referencedColumnName = "faculty_id"
     )
     private List<Course> courses;
 

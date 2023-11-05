@@ -15,7 +15,8 @@ import java.time.Period;
 @Table(
         name = "student",
         uniqueConstraints = {
-                @UniqueConstraint(name = "student_email_unique", columnNames = "email")
+                @UniqueConstraint(name = "student_email_unique", columnNames = "email"),
+                @UniqueConstraint(name = "student_phone_number_unique", columnNames = "phone_number")
         }
 )
 public class Student {
@@ -48,6 +49,13 @@ public class Student {
             columnDefinition = "varchar(200)"
     )
     private String email;
+
+    @Column(
+            name = "phone_number",
+            nullable = false,
+            columnDefinition = "INT"
+    )
+    private int phoneNumber;
 
     @Column(
             name = "dob",
