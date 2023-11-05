@@ -29,7 +29,7 @@ public class Faculty {
             name = "faculty_id",
             updatable = false
     )
-    private Long id;
+    private Long facultyId;
 
     @Column(
             name = "first_name",
@@ -64,18 +64,23 @@ public class Faculty {
     )
     private LocalDate dob;
 
-    @Column(
-            name = "joined"
-    )
 
-    @OneToMany(
+    @ManyToMany(
             cascade = CascadeType.ALL
     )
-    @JoinColumn(
-            name = "course_id",
-            referencedColumnName = "faculty_id"
+    @JoinTable(
+            name = "faculty_course_map",
+            joinColumns = @JoinColumn(
+                    name = "faculty_id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "course_id"
+            )
     )
     private List<Course> courses;
 
+    @Column(
+            name = "joined"
+    )
     private final LocalDate joined = LocalDate.now();
 }

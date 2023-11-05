@@ -23,7 +23,11 @@ public class CourseMaterial {
             strategy = GenerationType.SEQUENCE,
             generator = "course_material_generator"
     )
-    private Long courseMaterialId;
+    @Column(
+            name = "course_material_id",
+            updatable = false
+    )
+    private Long id;
     private String url;
 
     @OneToOne(
@@ -34,8 +38,7 @@ public class CourseMaterial {
             optional = false
     )
     @JoinColumn(
-            name = "course_id",
-            referencedColumnName = "course_id"
+            name = "course_id"
     )
     private Course course;
 }

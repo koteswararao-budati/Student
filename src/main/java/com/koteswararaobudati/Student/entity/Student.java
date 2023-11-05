@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 @Entity
 @Data
@@ -65,6 +66,22 @@ public class Student {
 
     @Transient
     private int age;
+
+    @Column(
+            name = "password",
+            nullable = false
+    )
+    private String password;
+
+    @OneToMany(
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            name = "semester_id",
+            referencedColumnName = "student_id"
+    )
+    private List<Semesters> semesters;
 
     @Embedded
     private Guardian guardian;
