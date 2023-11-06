@@ -66,15 +66,17 @@ public class Faculty {
 
 
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.PERSIST
     )
     @JoinTable(
             name = "faculty_course_map",
             joinColumns = @JoinColumn(
-                    name = "faculty_id"
+                    name = "faculty_id",
+                    referencedColumnName = "faculty_id"
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "course_id"
+                    name = "course_id",
+                    referencedColumnName = "course_id"
             )
     )
     private List<Course> courses;
@@ -83,4 +85,13 @@ public class Faculty {
             name = "joined"
     )
     private final LocalDate joined = LocalDate.now();
+
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.PERSIST
+    )
+    @JoinColumn(
+            name = "faculty_payment"
+    )
+    private FacultyPayment facultyPayment;
 }

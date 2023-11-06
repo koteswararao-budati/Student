@@ -54,18 +54,21 @@ public class Course {
     )
     private List<Student> student;
 
+/*
     @OneToMany(
             mappedBy = "facultyId"
     )
     private List<Faculty> faculties;
+*/
 
     @ManyToOne(
             fetch = FetchType.EAGER,
+            cascade = CascadeType.PERSIST,
             optional = false
     )
     @JoinColumn(
             name = "department",
-            referencedColumnName = "department_name"
+            referencedColumnName = "department_id"
     )
     private Department department;
 }

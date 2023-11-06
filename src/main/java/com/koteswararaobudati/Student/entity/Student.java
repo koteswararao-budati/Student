@@ -83,6 +83,12 @@ public class Student {
     )
     private List<Semesters> semesters;
 
+    @OneToOne
+    @JoinColumn(
+            name = "student_payment_info"
+    )
+    private StudentPayment studentPayment;
+
     @Embedded
     private Guardian guardian;
 

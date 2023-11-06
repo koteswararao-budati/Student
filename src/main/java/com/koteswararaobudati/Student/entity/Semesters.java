@@ -33,7 +33,7 @@ public class Semesters {
             cascade = CascadeType.PERSIST
     )
     @JoinColumn(
-            name = "course_id",
+            name = "semester_course",
             referencedColumnName = "semester_id"
     )
     private List<Course> courses;
