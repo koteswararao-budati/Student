@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,4 +45,14 @@ public class Department {
             )
     })
     private Faculty departmentHead;
+
+    @OneToMany(
+            mappedBy = "department"
+    )
+    private List<Course> courses;
+
+    @OneToMany(
+            mappedBy = "department"
+    )
+    private List<Faculty> faculties;
 }

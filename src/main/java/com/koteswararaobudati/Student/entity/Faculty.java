@@ -81,6 +81,13 @@ public class Faculty {
     )
     private List<Course> courses;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "department",
+            referencedColumnName = "department_id"
+    )
+    private Department department;
+
     @Column(
             name = "joined"
     )

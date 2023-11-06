@@ -24,11 +24,14 @@ public class CourseMaterial {
             generator = "course_material_generator"
     )
     @Column(
-            name = "course_material_id",
             updatable = false
     )
-    private Long id;
-    private String url;
+    private Long courseMaterialId;
+
+    @Column(
+            name = "course_material_url"
+    )
+    private String courseMaterialUrl;
 
     @OneToOne(
             cascade = CascadeType.ALL,

@@ -54,12 +54,10 @@ public class Course {
     )
     private List<Student> student;
 
-/*
-    @OneToMany(
-            mappedBy = "facultyId"
+    @ManyToMany(
+            mappedBy = "courses"
     )
     private List<Faculty> faculties;
-*/
 
     @ManyToOne(
             fetch = FetchType.EAGER,
