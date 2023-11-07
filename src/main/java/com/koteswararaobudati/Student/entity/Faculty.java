@@ -97,7 +97,8 @@ public class Faculty {
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
-            optional = false
+            optional = false,
+            orphanRemoval = true
     )
     @JoinColumn(
             name = "faculty_payment"

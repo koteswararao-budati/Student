@@ -10,14 +10,26 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class FacultyPaymentRepositoryTest {
 
-    private final FacultyPayment facultyPayment;
+    private final FacultyPaymentRepository facultyPaymentRepository;
 
     @Autowired
-    public FacultyPaymentRepositoryTest(FacultyPayment facultyPayment) {
-        this.facultyPayment = facultyPayment;
+    public FacultyPaymentRepositoryTest(FacultyPaymentRepository facultyPaymentRepository) {
+        this.facultyPaymentRepository = facultyPaymentRepository;
     }
 
     @Test
-    public void deleteFaultyPayment(){
+    public void getFacultyPayment(){
+        FacultyPayment facultyPayment1 = FacultyPayment.builder()
+                .accountNumber(123344)
+                .routingNumber(132323)
+                .paymentAddress("hhhh")
+                .build();
+
+        this.facultyPaymentRepository.save(facultyPayment1);
+    }
+
+    @Test
+    public void deleteFacultyPayment(){
+        this.facultyPaymentRepository.deleteById(3L);
     }
 }

@@ -26,7 +26,8 @@ public class FacultyPayment {
     )
     @Column(
             name = "faculty_payment_id",
-            updatable = false
+            updatable = false,
+            insertable = false
     )
     private Long facultyPaymentId;
 
@@ -54,7 +55,8 @@ public class FacultyPayment {
     @OneToOne(
             fetch = FetchType.EAGER,
             cascade = CascadeType.PERSIST,
-            mappedBy = "facultyPayment"
+            mappedBy = "facultyPayment",
+            optional = false
     )
     private Faculty faculty;
 }

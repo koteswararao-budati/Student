@@ -50,7 +50,9 @@ public class Course {
 
     @OneToOne(
 //            mapped variable name
-            mappedBy = "course"
+            mappedBy = "course",
+            optional = false,
+            orphanRemoval = true
     )
     private CourseMaterial courseMaterial;
 
