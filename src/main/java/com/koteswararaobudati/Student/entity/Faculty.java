@@ -1,9 +1,7 @@
 package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +10,8 @@ import java.util.List;
 @Entity
 @Table
 @Data
+@ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Faculty {
@@ -27,7 +27,8 @@ public class Faculty {
     )
     @Column(
             name = "faculty_id",
-            updatable = false
+            updatable = false,
+            insertable = false
     )
     private Long facultyId;
 
@@ -95,7 +96,8 @@ public class Faculty {
 
     @OneToOne(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.PERSIST
+            cascade = CascadeType.ALL,
+            optional = false
     )
     @JoinColumn(
             name = "faculty_payment"

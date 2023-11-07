@@ -4,14 +4,18 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+@ToString
 @Entity
+@Table(
+        name = "department"
+)
 public class Department {
     @Id
     @SequenceGenerator(
@@ -31,7 +35,8 @@ public class Department {
 
     @Column(
             name = "department_name",
-            nullable = false
+            nullable = false,
+            columnDefinition = "VARCHAR(50)"
     )
     private String name;
 
@@ -47,12 +52,20 @@ public class Department {
     private Faculty departmentHead;
 
     @OneToMany(
-            mappedBy = "department"
+            mappedBy = "department",
+            fetch = FetchType.EAGER
     )
     private List<Course> courses;
 
     @OneToMany(
-            mappedBy = "department"
+            mappedBy = "department",
+            fetch = FetchType.LAZY
     )
     private List<Faculty> faculties;
+
+    @OneToOne(
+            mappedBy = "department",
+            fetch = FetchType.LAZY
+    )
+    private Student student;
 }

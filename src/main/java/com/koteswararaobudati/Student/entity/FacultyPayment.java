@@ -1,15 +1,17 @@
 package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+@ToString
 @Entity
+@Builder
+@Table(
+        name = "faculty_payment"
+)
 public class FacultyPayment {
 
     @Id
@@ -22,17 +24,37 @@ public class FacultyPayment {
             strategy = GenerationType.SEQUENCE,
             generator = "faculty_payment_generator"
     )
+    @Column(
+            name = "faculty_payment_id",
+            updatable = false
+    )
     private Long facultyPaymentId;
+
+    @Column(
+            name = "account_number",
+            nullable = false,
+            columnDefinition = "INT"
+    )
     private int accountNumber;
+
+    @Column(
+            name = "routing_number",
+            nullable = false,
+            columnDefinition = "INT"
+    )
     private int routingNumber;
-    private String address;
+
+    @Column(
+            name = "payment_address",
+            nullable = false,
+            columnDefinition = "VARCHAR(100)"
+    )
+    private String paymentAddress;
 
     @OneToOne(
             fetch = FetchType.EAGER,
-            cascade = CascadeType.PERSIST
-    )
-    @JoinColumn(
-            referencedColumnName = "faculty_id"
+            cascade = CascadeType.PERSIST,
+            mappedBy = "facultyPayment"
     )
     private Faculty faculty;
 }

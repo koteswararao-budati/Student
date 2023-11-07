@@ -1,17 +1,17 @@
 package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 @Entity
-@Table
+@Table(
+        name = "course_material"
+)
 public class CourseMaterial {
     @Id
     @SequenceGenerator(
@@ -29,7 +29,8 @@ public class CourseMaterial {
     private Long courseMaterialId;
 
     @Column(
-            name = "course_material_url"
+            name = "course_material_url",
+            columnDefinition = "VARCHAR(255)"
     )
     private String courseMaterialUrl;
 
@@ -41,6 +42,7 @@ public class CourseMaterial {
             optional = false
     )
     @JoinColumn(
+            name = "course_id",
             referencedColumnName = "course_id"
     )
     private Course course;

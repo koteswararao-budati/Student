@@ -1,9 +1,7 @@
 package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -11,8 +9,10 @@ import java.util.List;
 
 @Entity
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(
         name = "student",
         uniqueConstraints = {
@@ -39,7 +39,7 @@ public class Student {
     @Column(
             name = "name",
             nullable = false,
-            columnDefinition = "TEXT"
+            columnDefinition = "VARCHAR(100)"
     )
     private String name;
 
@@ -69,7 +69,8 @@ public class Student {
 
     @Column(
             name = "password",
-            nullable = false
+            nullable = false,
+            columnDefinition = "CHAR(25)"
     )
     private String password;
 
@@ -83,14 +84,28 @@ public class Student {
     )
     private List<Semesters> semesters;
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     @JoinColumn(
-            name = "student_payment_info"
+            name = "student_payment_id",
+            referencedColumnName = "student_payment_id"
     )
     private StudentPayment studentPayment;
 
     @Embedded
     private Guardian guardian;
+
+    @OneToOne(
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(
+            name = "department_id",
+            referencedColumnName = "department_id"
+    )
+    private Department department;
 
     public int getAge() {
         return Period.between(this.dob, LocalDate.now()).getYears();

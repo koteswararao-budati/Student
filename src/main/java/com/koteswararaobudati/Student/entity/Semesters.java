@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 public class Semesters {
 
@@ -24,9 +26,16 @@ public class Semesters {
             generator = "semester_id_sequence"
     )
     @Column(
-            name = "semester_id"
+            name = "semester_id",
+            updatable = false
     )
     private int id;
+
+    @Column(
+            name = "year",
+            nullable = false,
+            columnDefinition = "INT"
+    )
     private short year;
 
     @OneToMany(

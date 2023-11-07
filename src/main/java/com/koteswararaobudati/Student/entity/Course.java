@@ -1,10 +1,7 @@
 package com.koteswararaobudati.Student.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Entity
 @Table
 public class Course {
@@ -31,8 +29,24 @@ public class Course {
             updatable = false
     )
     private Long courseId;
+    @Column(
+            name = "course_title",
+            columnDefinition = "VARCHAR(50)",
+            nullable = false
+    )
     private String title;
+
+    @Column(
+            name = "course_credits",
+            nullable = false
+    )
     private Integer credits;
+
+    @Column(
+            name = "fees",
+            columnDefinition = "INT"
+    )
+    private Short fees;
 
     @OneToOne(
 //            mapped variable name
@@ -40,19 +54,6 @@ public class Course {
     )
     private CourseMaterial courseMaterial;
 
-    @ManyToMany
-    @JoinTable(
-            name = "student_course_map",
-            joinColumns = @JoinColumn(
-                    name = "course_id",
-                    referencedColumnName = "course_id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "student_id",
-                    referencedColumnName = "student_id"
-            )
-    )
-    private List<Student> student;
 
     @ManyToMany(
             mappedBy = "courses"

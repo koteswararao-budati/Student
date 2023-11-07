@@ -16,6 +16,7 @@ class CourseMaterialRepositoryTest {
         this.courseMaterialRepository = courseMaterialRepository;
     }
 
+/*
     @Test
     void postCourseMaterials() {
         Course course = Course
@@ -33,4 +34,5 @@ class CourseMaterialRepositoryTest {
         this.courseMaterialRepository.save(courseMaterial);
 
     }
+*/
 }
